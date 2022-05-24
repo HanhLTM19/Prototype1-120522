@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Camera mainCamera;
+    public Camera holdCamera;
+
     public float moveSpeed;
     public float turnSpeed;
     // Start is called before the first frame update
@@ -31,5 +34,12 @@ public class PlayerController : MonoBehaviour
 
         //cach 2: di chuyen dau xe co do cong hon
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * moveHorizontal);
+
+        //hold camera khi nhan space
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            mainCamera.enabled = !mainCamera.enabled;
+            holdCamera.enabled = !holdCamera.enabled;
+        }
     }
 }
